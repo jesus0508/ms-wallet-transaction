@@ -16,7 +16,7 @@ public class WalletTransactionKafkaConsumer {
 
     @KafkaListener(topics = "${spring.kafka.consumer.topic.name}", groupId = "TRANSACTION")
     public void consume(SendMoneyEvent sendMoneyEvent) {
-        log.debug("Consuming Message {}", sendMoneyEvent);
+        log.info("Consuming Message {}", sendMoneyEvent);
         saveWalletTransactionUseCase.save(sendMoneyEvent).subscribe(result -> log.debug(result.toString()));
     }
 
